@@ -35,6 +35,8 @@ def upload_csv():
 @app.route('/result',methods = ["POST"])
 def showres():
 		if request.method == "POST":
+			os.system('python analysis.py')
+			
 			filenames = ['pic1.png', 'pic2.png','pic3.png', 'pic4.png']
 		
 			return render_template('result.html', filenames=filenames)
