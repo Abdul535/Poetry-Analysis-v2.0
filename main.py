@@ -28,10 +28,10 @@ def upload_csv():
 	
 		basedir = os.path.abspath(os.path.dirname(__file__))
 		csv.save(os.path.join(basedir,app.config["CSV_UPLOAD"],'all.csv'))
-		print('file saved')
+		output = 'file saved'
 
 		
-		return render_template('main.html')
+		return render_template('main.html', out = output)
 	return render_template('main.html')
 
 @app.route('/result',methods = ["POST"])
@@ -82,20 +82,7 @@ def processing():
 	filenames = ['pic1.png', 'pic2.png','pic3.png', 'pic4.png']		
 	return render_template('result.html', filenames=filenames)
 
-	# return render_template('success.html', passed_data = data)
 
-		
-
-
-
-
-
-
-
-# @app.route('/')
-# def display_image(filename):
-# 	# return redirect(url_for('static',filename = "/Images" + filename), code=301)
-# 	return render_template('main.html')
 
 
 app.run(debug=True,port=5000)

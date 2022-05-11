@@ -42,8 +42,44 @@
 		background-color: #3e8e41;
 		box-shadow: 0 5px #666;
 		transform: translateY(4px);
+		}
+		#upload::placeholder{
+			 
+		color:rgb(133,130,130);
+		opacity: 1;
+  
+		}
+		.inputfile {
+			width: 0.1px;
+			height: 0.1px;
+			opacity: 0;
+			overflow: hidden;
+			position: absolute;
+			z-index: -1;
 
 		}
+		label:hover{
+			border: 2px solid gainsboro;
+		}
+		label:active{
+		background-color: #3e8e41;
+		box-shadow: 0 5px #666;
+		transform: translateY(4px);
+		}
+		.inputfile + label {
+			/* font-size: 1.25em; */
+			/* font-weight: 700; */
+			height: 30px;
+			width: 100px;
+			margin-bottom: 2px;
+			color: rgb(0, 0, 0);
+			background-color: rgb(255, 255, 255);
+			display: inline-block;
+			border-radius: 3px;
+		}
+
+
+
 	</style>
 </head>
 <body>
@@ -54,9 +90,19 @@
 					
 						<h2 class="text-center fst-italic fw-bold" >Upload data in csv format</h2>
 						<form class="text-center" method="post" action="/" enctype="multipart/form-data">					
-								<input class="btn btn-outline-light" type="file" name="file" autocomplete="off" required>
+								<!-- <input id='upload' class="btn btn-outline-light" type="file" name="file" autocomplete="off" required> -->
+								<input type="file" name="file" id="file" class="inputfile btn btn-outline-light"  autocomplete="off" required/>
+								<label for="file">Choose a file</label>
+
+
+
+
+
 								<input type="submit" class="btn btn-light" value="Upload">	
 						</form>
+						{% if out %}
+							<p class="text-center fst-italic fw-bold">{{out}}</p>
+						{%endif%}
 					
 					<div style="margin-top: 140px;">
 						<form class="text-center" method="post" action="/target_endpoint" enctype="multipart/form-data">
