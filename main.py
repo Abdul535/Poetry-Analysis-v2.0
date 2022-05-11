@@ -13,7 +13,7 @@ def home():
 	return render_template('main.html')
 
 
-@app.route('/result',methods = ["POST"])
+@app.route('/',methods = ["POST"])
 def upload_csv():
 	if request.method == "POST":
 		csv = request.files['file']
@@ -28,11 +28,17 @@ def upload_csv():
 		basedir = os.path.abspath(os.path.dirname(__file__))
 		csv.save(os.path.join(basedir,app.config["CSV_UPLOAD"],'all'))
 
+		
+		return render_template('main.html')
+	return render_template('main.html')
 
-		filenames = ['pic1.png', 'pic2.png','pic3.png', 'pic4.png'] 
-
-
-		return render_template('result.html', filenames=filenames)
+@app.route('/result',methods = ["POST"])
+def showres():
+		if request.method == "POST":
+			filenames = ['pic1.png', 'pic2.png','pic3.png', 'pic4.png']
+		
+			return render_template('result.html', filenames=filenames)
+		return render_template('main.html')
 
 
 		
@@ -40,7 +46,6 @@ def upload_csv():
 
 
 
-		# return render_template("main.html")
 
 
 

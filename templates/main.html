@@ -8,13 +8,21 @@
 </head>
 <body>
 	<h2>Select a file to upload</h2>
-	<form method="post" action="/result" enctype="multipart/form-data">
+	<form method="post" action="/" enctype="multipart/form-data">
 		<p>
 			<input type="file" name="file" autocomplete="off" required>
 		</p>
     <p>
 		<input type="submit" value="Submit">
 	</p>
-</form>
+	</form>
+
+
+
+	<form method="post" action="/result" enctype="multipart/form-data">
+    <p>
+		<input type="submit" value="Analyze">
+	</p>
+	</form>
 </body>
 </html>
