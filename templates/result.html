@@ -8,11 +8,11 @@
 </head>
 <body>
 	<h2>Results</h2>
-	
+	{% if filenames %}
 		{% for name in filenames %}
 		<img src="/static/graphs/{{ name }}">
 		{% endfor %}
-
+    {% endif %}
 </form>
 </body>
 </html>

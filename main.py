@@ -6,14 +6,12 @@ app = Flask(__name__)
 app.config["CSV_UPLOAD"] = "./input"
 #app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["PNG","JPG","JPEG"]
 
-# from werkzeug.utils import secure_filename
+from werkzeug.utils import secure_filename
+
+
+
 
 @app.route('/',methods = ["GET","POST"])
-def home():
-	return render_template('main.html')
-
-
-@app.route('/',methods = ["POST"])
 def upload_csv():
 	if request.method == "POST":
 		csv = request.files['file']
@@ -23,10 +21,12 @@ def upload_csv():
 			return redirect(request.url)
 
 
-		# filename = secure_filename(csv.filename)
-
+		filename = secure_filename(csv.filename)
+		print('input file is', filename)
+	
 		basedir = os.path.abspath(os.path.dirname(__file__))
-		csv.save(os.path.join(basedir,app.config["CSV_UPLOAD"],'all'))
+		csv.save(os.path.join(basedir,app.config["CSV_UPLOAD"],'all.csv'))
+		print('file saved')
 
 		
 		return render_template('main.html')
@@ -36,7 +36,7 @@ def upload_csv():
 def showres():
 		if request.method == "POST":
 			os.system('python analysis.py')
-			
+
 			filenames = ['pic1.png', 'pic2.png','pic3.png', 'pic4.png']
 		
 			return render_template('result.html', filenames=filenames)
