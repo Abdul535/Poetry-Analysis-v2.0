@@ -65,7 +65,7 @@ def target():
 	some_data = urllib.parse.quote(convert(some_data)) # urllib2 is used if you have fancy characters in your data like "+"," ", or "="
 	# This is where the loading screen will be.
 	# ( You don't have to pass data if you want, but if you do, make sure you have a matching variable in the html i.e {{my_data}} )
-	return render_template('loading.html', my_data = some_data)
+	return render_template('loading.html')
 
 @app.route("/processing")
 def processing():
