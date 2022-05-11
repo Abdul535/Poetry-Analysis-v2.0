@@ -8,12 +8,12 @@ app.config["CSV_UPLOAD"] = "./input"
 
 # from werkzeug.utils import secure_filename
 
-@app.route('/',methods = ["GET"])
+@app.route('/',methods = ["GET","POST"])
 def home():
 	return render_template('main.html')
 
 
-@app.route('/',methods = ["POST"])
+@app.route('/result',methods = ["POST"])
 def upload_csv():
 	if request.method == "POST":
 		csv = request.files['file']
@@ -32,7 +32,7 @@ def upload_csv():
 		filenames = ['pic1.png', 'pic2.png','pic3.png', 'pic4.png'] 
 
 
-		return render_template('main.html', filenames=filenames)
+		return render_template('result.html', filenames=filenames)
 
 
 		

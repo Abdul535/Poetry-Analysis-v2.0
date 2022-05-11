@@ -7,14 +7,12 @@
 	<title>Poetry-Analysis</title>
 </head>
 <body>
-	<h2>Select a file to upload</h2>
-	<form method="post" action="/result" enctype="multipart/form-data">
-		<p>
-			<input type="file" name="file" autocomplete="off" required>
-		</p>
-    <p>
-		<input type="submit" value="Submit">
-	</p>
+	<h2>Results</h2>
+	
+		{% for name in filenames %}
+		<img src="/static/graphs/{{ name }}">
+		{% endfor %}
+
 </form>
 </body>
 </html>
