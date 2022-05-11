@@ -1,22 +1,28 @@
-<!doctype html>
-<title>Python Flask File Upload Example</title>
-<h2>Select a file to upload</h2>
-
-
-
-
-
-<form method="post" action="/" enctype="multipart/form-data">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Poetry-Analysis</title>
+</head>
+<body>
+	<h2>Select a file to upload</h2>
+	<form method="post" action="/" enctype="multipart/form-data">
 		<p>
 			<input type="file" name="file" autocomplete="off" required>
 		</p>
     <p>
 		<input type="submit" value="Submit">
 	</p>
-</form>
 
 
-
-{% for name in filenames %}
+	<h2>Results</h2>
+	
+		{% for name in filenames %}
 		<img src="/static/graphs/{{ name }}">
-{% endfor %}
+		{% endfor %}
+
+</form>
+</body>
+</html>
